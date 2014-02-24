@@ -120,6 +120,10 @@ public class ServeurHttp {
 				out.flush();
 				//  Rajouter statistique erreur 400
 			} else {
+				// Default is index.html
+				if(reqHTTP[1].equals("/")) {
+					reqHTTP[1] = "/index.html";
+				}
 				fichier = new File(racine+reqHTTP[1]);
 				if (!fichier.exists()) {
 					reponse =  "HTTP/1.0 404 Not Found\n";
